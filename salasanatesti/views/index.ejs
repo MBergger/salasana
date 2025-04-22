@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Salasanan tarkistus</title>
+</head>
+<body>
+  <h1>Syötä salasana</h1>
+  <form onsubmit="return validatePassword()">
+    <input type="password" id="password" placeholder="Salasana" required />
+    <button type="submit">Tarkista</button>
+  </form>
+
+  <script>
+    function checkPassword(password) {
+      if (password.length < 10) return false;
+      if (!/[A-Z]/.test(password)) return false;
+      if (!/[a-z]/.test(password)) return false;
+      if (!/[0-9]/.test(password)) return false;
+      if (!/[^A-Za-z0-9]/.test(password)) return false;
+      return true;
+    }
+
+    function validatePassword() {
+      const pw = document.getElementById('password').value;
+      if (!checkPassword(pw)) {
+        alert(" Salasana ei täytä vaatimuksia!");
+        return false;
+      }
+      alert(" Hyvä salasana!");
+      return true;
+    }
+  </script>
+</body>
+</html>
